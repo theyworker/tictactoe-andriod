@@ -9,18 +9,18 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     // 0 is red, 1 is blue
+
     int activePlayer = 0;
+    boolean gameIsActive = true;
     int[] gameStatus = {2,2,2,2,2,2,2,2,2};
 
     public void dropIn(View view){
+
         ImageView count = (ImageView) view;
-
-
         int tag = Integer.parseInt(count.getTag().toString());
         int winningPostions[][] = {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
 
-
-        if(gameStatus[tag] == 2) {
+        if(gameStatus[tag] == 2 && gameIsActive) {
             count.setTranslationY(-1000f);
             this.gameStatus[tag] = activePlayer;
             if (this.activePlayer == 0) {
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     String result = String.valueOf(gameStatus[winningPositions[0]]);
 
                     Log.i("result", result);
+                    this.gameIsActive = false;
                 }
             }
         }
