@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,12 +41,30 @@ public class MainActivity extends AppCompatActivity {
                 gameStatus[winningPositions[1]] == gameStatus[winningPositions[2]] &&
                 gameStatus[winningPositions[0]] != 2){
                     String result = String.valueOf(gameStatus[winningPositions[0]]);
-
+                    TextView winnermsg = (TextView) findViewById(R.id.winnermessage);
+                    winnermsg.setText("Player "+result+" won!");
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.playAgainLayout);
+                    layout.setVisibility(View.VISIBLE);
                     Log.i("result", result);
                     this.gameIsActive = false;
                 }
             }
         }
+
+    }
+
+    public void playAgain(View view){
+        gameIsActive = true;
+
+        for (int x = 0; x< gameStatus.length; x++){
+            gameStatus[x] = 2;
+        }
+
+//        GridLayout gridl = (GridLayout) findViewById(R.id.gridl);
+//
+//        for (int i = 0; i<gridl.getChildCount(); i++){
+//            ((ImageView) gridl.getChildAt(i)).setImageResource(0);
+//        }
 
     }
 
