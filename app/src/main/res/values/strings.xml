@@ -3,4 +3,5 @@
     <string name="play_again">Game Over!</string>
     <string name="play_againbtn">Play Again</string>
     <string name='exit'>Quit</string>
+    <string name='display'>Player 0 make your move</string>
 </resources>

@@ -21,8 +21,24 @@ public class MainActivity extends AppCompatActivity {
     public void dropIn(View view) {
 
         ImageView count = (ImageView) view;
+        TextView disp = (TextView) findViewById(R.id.displayMsg);
         int tag = Integer.parseInt(count.getTag().toString());
         int winningPostions[][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
+
+        if(gameStatus[tag] == 1 || gameStatus[tag] == 0){
+            count.animate().rotationBy(1000f).setDuration(1500);
+
+            disp.setText("Are you freaking blind!??");
+        }
+
+        else if(activePlayer == 0){
+            disp.setText("Player 1 make your move");
+        }
+
+        else if(activePlayer == 1){
+            disp.setText("Player 0 make your move");
+        }
+
 
         if (gameStatus[tag] == 2 && gameIsActive) {
             count.setTranslationY(-1000f);
