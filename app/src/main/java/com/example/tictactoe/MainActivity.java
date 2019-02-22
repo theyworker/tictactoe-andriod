@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             count.animate().translationYBy(1000f).setDuration(300);
+            Log.i("turn", "dropIn: "+String.valueOf(turn));
+            turn++;
 
 
 
@@ -52,12 +54,22 @@ public class MainActivity extends AppCompatActivity {
                     this.gameIsActive = false;
                 }
             }
+
+            if(gameIsActive && turn == 9){
+                TextView winnermsg = (TextView) findViewById(R.id.winnermessage);
+                winnermsg.setText("Game ended in a draw");
+                LinearLayout layout = (LinearLayout) findViewById(R.id.playAgainLayout);
+                layout.setVisibility(View.VISIBLE);
+                Log.i("result", "Drawn");
+                this.gameIsActive = false;
+            }
         }
     }
 
 
     public void playAgain(View view){
         gameIsActive = true;
+        turn = 0;
 
         for (int x = 0; x< gameStatus.length; x++){
             gameStatus[x] = 2;
@@ -73,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.playAgainLayout);
         layout.setVisibility(View.INVISIBLE);
 
+    }
+
+    public void exitGame(View view){
+        finish();
     }
 
     @Override

@@ -2,4 +2,5 @@
     <string name="app_name">Tic Tac toe</string>
     <string name="play_again">Game Over!</string>
     <string name="play_againbtn">Play Again</string>
+    <string name='exit'>Quit</string>
 </resources>
